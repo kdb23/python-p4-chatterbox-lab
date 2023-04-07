@@ -59,10 +59,11 @@ def messages_by_id(id):
 
         return response
 
-    # elif request.method == 'DELTE':
-
-
-    # return 'Good Morning'
+    elif request.method == 'DELETE':
+        db.session.delete(selected_entry)
+        db.session.commit()
+        
+        return make_response({'message': 'entry no longer exists'}, 200)
 
 if __name__ == '__main__':
     app.run(port=5555)
